@@ -63,11 +63,44 @@
         /* Style the search button on hover */
         button[type="submit"]:hover {
             background-color: #0056b3;
+            transition: 0.7s;
+
         }
         .parent{
             display: flex;
             flex-direction: column;
             justify-content: center;
+        }
+        .perdict{
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .perdict a button{
+            background-color: #007BFF;
+            color: #fff;
+            width: 200px;
+            height: 35px;
+            border-radius: 16px;
+            outline: none;
+            border: none;
+        }
+        .perdict a button:hover {
+            background-color: #0056b3;
+            transition: 0.7s;
+        }
+        .perdict a input{
+            background-color: #007BFF;
+            color: #fff;
+            width: 200px;
+            height: 35px;
+            border-radius: 16px;
+            outline: none;
+            border: none;
+        }
+        .perdict a input:hover {
+            background-color: #0056b3;
+            transition: 0.7s;
         }
     </style>
 </head>
@@ -79,6 +112,14 @@
                 <input type="text" name="search" placeholder="Enter a word..." required>
                 <button type="submit">Search</button>
             </form>
+        </div>
+        <div class="perdict">
+            <form method="POST">
+            {% csrf_token%}
+            
+            <a href="#"> <input name="save" type="submit" value="Save to Personal Dictionary"></a>
+            </form>
+            <a href="{% url 'personal-dictionary' %}"><button>Personal Dictionary</button></a>
         </div>
 
         <h3>Meaning: {{meanings}}</h3>

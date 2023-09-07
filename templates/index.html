@@ -64,6 +64,24 @@
         button[type="submit"]:hover {
             background-color: #0056b3;
         }
+        .perdict{
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .perdict a button{
+            background-color: #007BFF;
+            color: #fff;
+            width: 200px;
+            height: 35px;
+            border-radius: 16px;
+            outline: none;
+            border: none;
+        }
+        .perdict a button:hover {
+            background-color: #0056b3;
+            transition: 0.7s;
+        }
     </style>
 </head>
 <body>
@@ -73,6 +91,11 @@
             <input type="text" name="search" placeholder="Enter a word..." required>
             <button type="submit">Search</button>
         </form>
+
+        <div class="perdict">
+            <a href="{% url 'personal-dictionary' %}"><button>Personal Dictionary</button></a>
+        </div>
     </div>
+    
 </body>
 </html>
