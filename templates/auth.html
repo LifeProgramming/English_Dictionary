@@ -1,0 +1,72 @@
+{% extends 'shared.html'%}
+{% load static %}
+
+{% block title%}
+English Dictionary
+{% endblock%}
+
+{% block css_file%}
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock%}
+
+{% block body%}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% if page == 'login' %}
+    <div class="container">
+        <h1>Login</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="username" name="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="reg-p">
+            <p class="reg-te">If you have'nt any accounts, Register: </p>
+        </div>
+
+        <div class="perdict">
+            <a href="{% url 'register' %}"><button>Register</button></a>
+        </div>
+    </div>
+
+{% else%}
+<div class="container">
+    <h1>Register</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form%}
+        <div class="form-group">
+            <label for="username">{{field.label}}:</label>
+            <br>
+            {{field}}
+        </div>
+        {% endfor%}
+        <!-- <div class="form-group">
+            <input type="password" name="password" placeholder="Password" required>
+        </div>
+
+        <div class="form-group">
+            <input type="password2" name="password2" placeholder="Confirm Password" required>
+        </div> -->
+        <button type="submit">Register</button>
+    </form>
+    <div class="reg-p">
+        <p class="reg-te">If you have account, log in: </p>
+    </div>
+
+    <div class="perdict">
+        <a href="{% url 'login' %}"><button>Login</button></a>
+    </div>
+</div>
+{% endif %}
+{% endblock%}

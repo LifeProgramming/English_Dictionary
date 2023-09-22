@@ -1,0 +1,23 @@
+{% extends 'shared.html'%}
+{% load static %}
+
+{% block title%}
+Login Completed
+{% endblock%}
+
+{% block css_file%}
+    <link rel="stylesheet" href="{% static 'css/login_comp.css' %}">
+{% endblock%}
+
+{% block body%}
+    <div class="container">
+        <h1>Login Completed</h1>
+        <div class="log-comp">
+            <p class="log-te">You Have successfully logged in!</p>
+        </div>
+
+        <div class="perdict">
+            <a href="{% url 'index' %}"><button>Go To App</button></a>
+        </div>
+    </div>
+{% endblock%}

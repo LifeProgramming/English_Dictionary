@@ -1,74 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Dictionary</title>
-    <style>
-        /* Reset some default browser styles */
-        body, h1, ul {
-            margin: 0;
-            padding: 0;
-        }
-        
-        /* Style the body */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            text-align: center;
-        }
+{% extends 'shared.html'%}
+{% load static %}
 
-        /* Style the container */
-        .container {
-            max-width: 95%;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+{% block title%}
+Personal Dictionary
+{% endblock%}
 
-        /* Style the header */
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+{% block css_file%}
+    <link rel="stylesheet" href="{% static 'css/perdict.css' %}">
+{% endblock%}
 
-        /* Style the list of saved words */
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        /* Style each saved word entry */
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px 0;
-        }
-
-        /* Style the buttons for word actions */
-        .word-actions button {
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-
-        /* Style the buttons on hover */
-        .word-actions button:hover {
-            background-color: #0056b3;
-            transition: 0.7s;
-        }
-    </style>
-</head>
-<body>
+{% block body%}
     <div class="container">
         <h1>Personal Dictionary</h1>
         <ul>
@@ -103,5 +44,6 @@
         
         
     </div>
-</body>
-</html>
+    
+
+{% endblock%}

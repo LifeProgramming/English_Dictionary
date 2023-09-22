@@ -1,0 +1,23 @@
+{% extends 'shared.html'%}
+{% load static %}
+
+{% block title%}
+English Dictionary
+{% endblock%}
+
+{% block css_file%}
+    <link rel="stylesheet" href="{% static 'css/register_comp.css' %}">
+{% endblock%}
+
+{% block body%}
+    <div class="container">
+        <h1>Registration Completed</h1>
+        <div class="reg-comp">
+            <p class="reg-te">You Have successfully registered!</p>
+        </div>
+
+        <div class="perdict">
+            <a href="{% url 'index' %}"><button>Go To App</button></a>
+        </div>
+    </div>
+{% endblock%}

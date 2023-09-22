@@ -5,11 +5,63 @@ from requests.exceptions import RequestException
 from django.shortcuts import render
 from django.contrib import messages
 from .models import PersonalDictionary
-
+from django.contrib.auth import authenticate , login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 # Create your views here.
 
+def loginUser(request):
+    page='login'
+    if request.user.is_authenticated:
+        return HttpResponse('Sorry! You have already logged in!')
+
+    if request.method=='POST':
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+
+        try:
+            user=User.objects.get(username=username)
+        except:
+            messages.add_message(request, messages.INFO, "This user does not exist!")
+    
+        user=authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('loginCompleted')
+    
 
 
+    context={'page': page}
+    return render(request, 'auth.html', context)
+
+
+def loginCompleted(request):
+    return render(request, 'login_comp.html')
+
+
+def registerUser(request):
+    form=UserCreationForm()
+    if request.method=='POST':
+        form= UserCreationForm(request.POST)
+        if form.is_valid():
+            user=form.save()
+            login(request, user)
+            return redirect('registerCompleted')
+        else:
+             messages.add_message(request, messages.INFO, "Sorry! Something went wrong!!!")
+           
+    return render(request, 'auth.html', context={'form':form})
+
+def registerCompleted(request):
+    return render(request, 'register_comp.html')
+
+def logoutUser(request):
+    logout(request)
+    return redirect('index')
+@login_required(login_url='login')
 def index(request):
     return render(request, 'index.html')
 
@@ -66,7 +118,7 @@ def PerDictView(request):
     
     saved_words = PersonalDictionary.objects.all()
     word_data = []
-
+    
     for word in saved_words:
         search = word.word
         word_id=word.id

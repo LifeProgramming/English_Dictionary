@@ -1,0 +1,97 @@
+/* Reset some default browser styles */
+body, h1, form, input, button {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+/* Style the container */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+/* Style the header */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Style the form */
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style the input field */
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+
+/* Style the search button */
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+/* Style the search button on hover */
+button[type="submit"]:hover {
+    background-color: #0056b3;
+    transition: 0.7s;
+
+}
+.parent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.perdict{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.perdict a button{
+    background-color: #007BFF;
+    color: #fff;
+    width: 200px;
+    height: 35px;
+    border-radius: 16px;
+    outline: none;
+    border: none;
+}
+.perdict a button:hover {
+    background-color: #0056b3;
+    transition: 0.7s;
+}
+.perdict a input{
+    background-color: #007BFF;
+    color: #fff;
+    width: 200px;
+    height: 35px;
+    border-radius: 16px;
+    outline: none;
+    border: none;
+}
+.perdict a input:hover {
+    background-color: #0056b3;
+    transition: 0.7s;
+}
